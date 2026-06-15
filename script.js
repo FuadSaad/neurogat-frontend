@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Configuration for Deployment
-    const BACKEND_URL = 'https://neurogat-api.onrender.com';
+    const BACKEND_URL = 'https://fuad1463-neurogat-api.hf.space';
 
     // Form Submission Logic
     form.addEventListener('submit', async (e) => {
