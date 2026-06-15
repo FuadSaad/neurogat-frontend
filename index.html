@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroGAT | Alzheimer's AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-elements">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Neuro<span class="highlight">GAT</span></h1>
+            <p>Multimodal Graph Attention Network for Alzheimer's Prediction</p>
+        </header>
+
+        <main>
+            <!-- Input Section -->
+            <section class="glass-panel input-section">
+                <h2><i class="fa-solid fa-brain"></i> Patient Data Input</h2>
+                <form id="prediction-form">
+                    
+                    <div class="upload-area" id="drop-zone">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <h3>Upload Brain MRI</h3>
+                        <p>Drag & drop or click to browse</p>
+                        <input type="file" id="mri-image" accept="image/*" required hidden>
+                        <img id="preview-image" style="display: none;" alt="MRI Preview">
+                    </div>
+
+                    <div class="clinical-inputs">
+                        <div class="input-group">
+                            <label for="age">Age (Optional)</label>
+                            <input type="number" id="age" name="age" min="50" max="100" placeholder="e.g., 75">
+                        </div>
+                        <div class="input-group">
+                            <label for="sex">Sex (Optional)</label>
+                            <select id="sex" name="sex">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="mmse">MMSE Score (Optional)</label>
+                            <input type="number" id="mmse" name="mmse" min="0" max="30" placeholder="e.g., 28">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-analyze" id="submit-btn">
+                        <span>Analyze Patient</span>
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </button>
+                </form>
+            </section>
+
+            <!-- Results Section (Hidden by Default) -->
+            <section class="glass-panel results-section" id="results-panel" style="display: none;">
+                <h2><i class="fa-solid fa-chart-pie"></i> Analysis Results</h2>
+                
+                <div class="loader" id="loader">
+                    <div class="spinner"></div>
+                    <p>Fusing Multimodal Features via GNN...</p>
+                </div>
+
+                <div class="result-content" id="result-content" style="display: none;">
+                    <div class="primary-result">
+                        <h3>Predicted Diagnosis</h3>
+                        <div class="diagnosis-badge" id="diagnosis-text">AD</div>
+                        <p class="confidence">Confidence: <span id="primary-confidence">99.7%</span></p>
+                    </div>
+
+                    <div class="scores-container">
+                        <h4>Class Probabilities</h4>
+                        <div class="progress-wrapper">
+                            <div class="progress-label"><span>AD (Alzheimer's)</span> <span id="ad-score-text">0%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" id="ad-bar"></div></div>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div class="progress-label"><span>CN (Cognitively Normal)</span> <span id="cn-score-text">0%</span></div>
+                            <div class="progress-bar"><div class="progress-fill cn-fill" id="cn-bar"></div></div>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div class="progress-label"><span>EMCI (Early MCI)</span> <span id="emci-score-text">0%</span></div>
+                            <div class="progress-bar"><div class="progress-fill emci-fill" id="emci-bar"></div></div>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div class="progress-label"><span>LMCI (Late MCI)</span> <span id="lmci-score-text">0%</span></div>
+                            <div class="progress-bar"><div class="progress-fill lmci-fill" id="lmci-bar"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
